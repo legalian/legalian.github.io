@@ -15,7 +15,7 @@ date:   2018-08-13 10:39:54 -0400
 <p>
 	These pages are still under construction. Certain elements of them will be rewritten to be more understandable, and screenshots of the project will be included as well.
 </p>
-![figure 4]({{"/assets/voxel/title/figure1.png"|absolute_url}})
+![figure 1]({{"/assets/vox/title/figure1.png"|absolute_url}})
 {% for post in site.categories.voxel %}
 <h3><a href="{{ post.url }}">{{ post.title }}</a></h3>
 {% endfor %}

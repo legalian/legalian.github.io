@@ -14,7 +14,7 @@ Secondly, puzzles are typically either face-turning, edge-turning, or vertex-tur
 </p>
 ![figure 2]({{"/assets/puzzle/chapter1/figure2.png"|absolute_url}})
 <p>
-Third, some puzzles are ‘deep cut’ and some are ‘shallow cut’. Each face, edge, or vertex that can be twisted has a ‘cutting plane’, or a plane that divides the puzzle into a turning and not-turning region. Increasing the depth of the cutting plane on the puzzle often increases the challenge because deeper cuts produce pieces that can be moved by many different turns.
+Third, some puzzles are ‘deep cut’ and some are ‘shallow cut’. Each face, edge, or vertex that can be twisted has a ‘cutting plane’, or a plane that divides the puzzle into a turning and not-turning region. Increasing the depth of the cutting plane on the puzzle often increases the challenge because deeper cuts produce pieces that can be moved by many different turns. Also, puzzles can be ‘high order’, which means they have multiple parallel cutting planes, such as a 4x4 or 5x5 rubik’s cube as opposed to a 3x3 rubik’s cube.
 </p>
 ![figure 3]({{"/assets/puzzle/chapter1/figure3.png"|absolute_url}})
 <p>
