@@ -61,12 +61,36 @@ For a puzzle with edge turning, though, calculating the cutting planes can becom
 </div>
 For tetrahedrons, this is very simple; a regular tetrahedron is its own dual solid, and aligning them this way produces a cube. The cutting planes perpendicular to the faces of a tetrahedron (turning 120 degrees) and the cutting planes perpendicular to the faces of a cube (turning 180 degrees) represent the first set of symmetry groups that may be used together to produce puzzles.
 </p>
+<div style="display:flex; margin:1em;">
+    <div style="flex:66%;">
+        <img src="{{"/assets/puzzle/chapter1/screenshot5.png"|absolute_url}}"/>
+    </div>
+    <div style="flex:33%;">
+        <img src="{{"/assets/puzzle/chapter1/picture2.jpg"|absolute_url}}"/>
+    </div>
+</div>
 <p>
 For cubes and octahedrons, the same process produces a different shape, the rhombic dodecahedron. The second set of symmetry groups consists of the cutting planes perpendicular to the faces of a cube (90 degree rotations), the faces of an octahedron (120 degree rotations), and the faces of a rhombic dodecahedron (180 degree rotations).
 </p>
+<div style="display:flex; margin:1em;">
+    <div style="flex:66%;">
+        <img src="{{"/assets/puzzle/chapter1/screenshot6.png"|absolute_url}}"/>
+    </div>
+    <div style="flex:33%;">
+        <img src="{{"/assets/puzzle/chapter1/picture3.jpg"|absolute_url}}"/>
+    </div>
+</div>
 <p>
 The final set of symmetry groups comes from the icosahedron (120 degree), dodecahedron (72 degree), and rhombic triacontahedron (180 degree) via the same process.
 </p>
+<div style="display:flex; margin:1em;">
+    <div style="flex:66%;">
+        <img src="{{"/assets/puzzle/chapter1/screenshot7.png"|absolute_url}}"/>
+    </div>
+    <div style="flex:33%;">
+        <img src="{{"/assets/puzzle/chapter1/picture4.jpg"|absolute_url}}"/>
+    </div>
+</div>
 
 
 

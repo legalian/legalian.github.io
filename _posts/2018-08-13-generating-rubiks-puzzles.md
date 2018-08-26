@@ -25,6 +25,10 @@ Fourth, the vertices are sorted into different containers, each container repres
 Lastly, each container is stitched together to create its visible mesh. Faces are identified as non-exclusive groups of vertices that were created by the same plane. Cross and dot products are then used to sort them with the correct winding order. If the plane that created these vertices was a shape defining plane, a copy of the face vertices are made and then scaled inwards to serve as the colored part of the mesh. 
 </p>
 ![figure 5]({{"/assets/puzzle/chapter2/figure5.png"|absolute_url}})
+<p>
+The rest of the application isn't as interesting from a mathematical point of view. Pieces of the puzzle can be dragged to rotate, or spheres can be clicked to rotate a face once. Pieces rotate if their centers lie above the cutting plane that was 'activated'.
+</p>
+![screenshot 1]({{"/assets/puzzle/chapter2/screenshot1.png"|absolute_url}})
 
 
 
