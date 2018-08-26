@@ -26,3 +26,14 @@ Lastly, each container is stitched together to create its visible mesh. Faces ar
 </p>
 ![figure 5]({{"/assets/puzzle/chapter2/figure5.png"|absolute_url}})
 
+
+
+
+
+
+
+
+
+
+
+
