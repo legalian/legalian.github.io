@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1"><!-- Begin Jekyll SEO tag v2.5.0 -->
+<title>Interesting Bugs | Parker Lawrence portfolio</title>
+<meta name="generator" content="Jekyll v3.8.3" />
+<meta property="og:title" content="Interesting Bugs" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="Working on the voxel engine was a difficult process. I&#39;ve had to do a lot of debugging, and very few even displayed anything abnormal to the screen. When bugs do manifest visually, however, it&#39;s a nice change, because it allows you to think more creatively about what the problem could be (and usually solve the problem much faster). I&#39;ve documented some of the more interesting visual bugs below. This is what happens when perlin noise is done with nearest-neighbor interpolation. Everything implemented is perfectly functional in this example- the only problem was that the isosurface I specified wasn&#39;t the one I had in mind. Here is the block visualization method, but with the scaling on each face too small, and with no skirts. These two screenshots were from before I discovered dual contouring. I had implimented the block method and marching cubes, and I was trying to create a way to bridge the two so that different parts of the world could have different looking features. It involved using the block method but having it connect to vertecies that lie on the edge between two voxels. These screenshots are from the middle of that experiment. These screenshots are the result of the octree being incorrectly stored. Volumes filled with only one type of mass may have to be divided further if a vertex must lie in that volume, i.e. if there is a different type of mass that lies along its edge. If that condition is ignored, then this result is produced. I think it&#39;s interesting because you can see the octree in the rendered mesh. This is the result of a failure when the program is reading from file. In this case, the program was saving the file differently than it was reading it, which manifests in this interesting formation." />
+<meta property="og:description" content="Working on the voxel engine was a difficult process. I&#39;ve had to do a lot of debugging, and very few even displayed anything abnormal to the screen. When bugs do manifest visually, however, it&#39;s a nice change, because it allows you to think more creatively about what the problem could be (and usually solve the problem much faster). I&#39;ve documented some of the more interesting visual bugs below. This is what happens when perlin noise is done with nearest-neighbor interpolation. Everything implemented is perfectly functional in this example- the only problem was that the isosurface I specified wasn&#39;t the one I had in mind. Here is the block visualization method, but with the scaling on each face too small, and with no skirts. These two screenshots were from before I discovered dual contouring. I had implimented the block method and marching cubes, and I was trying to create a way to bridge the two so that different parts of the world could have different looking features. It involved using the block method but having it connect to vertecies that lie on the edge between two voxels. These screenshots are from the middle of that experiment. These screenshots are the result of the octree being incorrectly stored. Volumes filled with only one type of mass may have to be divided further if a vertex must lie in that volume, i.e. if there is a different type of mass that lies along its edge. If that condition is ignored, then this result is produced. I think it&#39;s interesting because you can see the octree in the rendered mesh. This is the result of a failure when the program is reading from file. In this case, the program was saving the file differently than it was reading it, which manifests in this interesting formation." />
+<link rel="canonical" href="http://localhost:4000/voxel/2018/04/02/interesting-bugs.html" />
+<meta property="og:url" content="http://localhost:4000/voxel/2018/04/02/interesting-bugs.html" />
+<meta property="og:site_name" content="Parker Lawrence portfolio" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2018-04-02T10:39:54-04:00" />
+<script type="application/ld+json">
+{"description":"Working on the voxel engine was a difficult process. I&#39;ve had to do a lot of debugging, and very few even displayed anything abnormal to the screen. When bugs do manifest visually, however, it&#39;s a nice change, because it allows you to think more creatively about what the problem could be (and usually solve the problem much faster). I&#39;ve documented some of the more interesting visual bugs below. This is what happens when perlin noise is done with nearest-neighbor interpolation. Everything implemented is perfectly functional in this example- the only problem was that the isosurface I specified wasn&#39;t the one I had in mind. Here is the block visualization method, but with the scaling on each face too small, and with no skirts. These two screenshots were from before I discovered dual contouring. I had implimented the block method and marching cubes, and I was trying to create a way to bridge the two so that different parts of the world could have different looking features. It involved using the block method but having it connect to vertecies that lie on the edge between two voxels. These screenshots are from the middle of that experiment. These screenshots are the result of the octree being incorrectly stored. Volumes filled with only one type of mass may have to be divided further if a vertex must lie in that volume, i.e. if there is a different type of mass that lies along its edge. If that condition is ignored, then this result is produced. I think it&#39;s interesting because you can see the octree in the rendered mesh. This is the result of a failure when the program is reading from file. In this case, the program was saving the file differently than it was reading it, which manifests in this interesting formation.","@type":"BlogPosting","url":"http://localhost:4000/voxel/2018/04/02/interesting-bugs.html","headline":"Interesting Bugs","dateModified":"2018-04-02T10:39:54-04:00","datePublished":"2018-04-02T10:39:54-04:00","mainEntityOfPage":{"@type":"WebPage","@id":"http://localhost:4000/voxel/2018/04/02/interesting-bugs.html"},"@context":"http://schema.org"}</script>
+<!-- End Jekyll SEO tag -->
+<link rel="stylesheet" href="/assets/main.css"><link type="application/atom+xml" rel="alternate" href="http://localhost:4000/feed.xml" title="Parker Lawrence portfolio" /></head>
+<body><header class="site-header" role="banner">
+
+  <div class="wrapper"><a class="site-title" rel="author" href="/">Parker Lawrence portfolio</a><nav class="site-nav">
+        <input type="checkbox" id="nav-trigger" class="nav-trigger" />
+        <label for="nav-trigger">
+          <span class="menu-icon">
+            <svg viewBox="0 0 18 15" width="18px" height="15px">
+              <path d="M18,1.484c0,0.82-0.665,1.484-1.484,1.484H1.484C0.665,2.969,0,2.304,0,1.484l0,0C0,0.665,0.665,0,1.484,0 h15.032C17.335,0,18,0.665,18,1.484L18,1.484z M18,7.516C18,8.335,17.335,9,16.516,9H1.484C0.665,9,0,8.335,0,7.516l0,0 c0-0.82,0.665-1.484,1.484-1.484h15.032C17.335,6.031,18,6.696,18,7.516L18,7.516z M18,13.516C18,14.335,17.335,15,16.516,15H1.484 C0.665,15,0,14.335,0,13.516l0,0c0-0.82,0.665-1.483,1.484-1.483h15.032C17.335,12.031,18,12.695,18,13.516L18,13.516z"/>
+            </svg>
+          </span>
+        </label>
+
+        <div class="trigger"><a class="page-link" href="/about/">About</a><a class="page-link" href="/breadboardcomputer.html">Breadboard Computer</a><a class="page-link" href="/puzzlegenerator.html">Puzzle Generator</a><a class="page-link" href="/tedtalk.html">TED Talk</a><a class="page-link" href="/voxelengine.html">Voxel Engine</a></div>
+      </nav></div>
+</header>
+<main class="page-content" aria-label="Content">
+      <div class="wrapper">
+        <article class="post h-entry" itemscope itemtype="http://schema.org/BlogPosting">
+
+  <header class="post-header">
+    <h1 class="post-title p-name" itemprop="name headline">Interesting Bugs</h1>
+    <p class="post-meta">
+      <time class="dt-published" datetime="2018-04-02T10:39:54-04:00" itemprop="datePublished">Apr 2, 2018
+      </time></p>
+  </header>
+
+  <div class="post-content e-content" itemprop="articleBody">
+    <p>
+Working on the voxel engine was a difficult process. I've had to do a lot of debugging, and very few even displayed anything abnormal to the screen. When bugs do manifest visually, however, it's a nice change, because it allows you to think more creatively about what the problem could be (and usually solve the problem much faster). I've documented some of the more interesting visual bugs below.
+</p>
+<p><img src="http://localhost:4000/assets/vox/bonus/screenshot1.png" alt="figure 5" /></p>
+<p>
+This is what happens when perlin noise is done with nearest-neighbor interpolation. Everything implemented is perfectly functional in this example- the only problem was that the isosurface I specified wasn't the one I had in mind.
+</p>
+<div style="display:flex; margin:1em;">
+    <div style="flex:45%;">
+        <img src="http://localhost:4000/assets/vox/bonus/screenshot2a.png" />
+    </div>
+    <div style="flex:45%;">
+        <img src="http://localhost:4000/assets/vox/bonus/screenshot2b.png" />
+    </div>
+</div>
+<p>
+Here is the block visualization method, but with the scaling on each face too small, and with no skirts.
+</p>
+<div style="display:flex; margin:1em;">
+    <div style="flex:45%;">
+        <img src="http://localhost:4000/assets/vox/bonus/screenshot3a.png" />
+    </div>
+    <div style="flex:45%;">
+        <img src="http://localhost:4000/assets/vox/bonus/screenshot3b.png" />
+    </div>
+</div>
+<p>
+These two screenshots were from before I discovered dual contouring. I had implimented the block method and marching cubes, and I was trying to create a way to bridge the two so that different parts of the world could have different looking features. It involved using the block method but having it connect to vertecies that lie on the edge between two voxels. These screenshots are from the middle of that experiment.
+</p>
+<div style="display:flex; margin:1em;">
+    <div style="flex:45%;">
+        <img src="http://localhost:4000/assets/vox/bonus/screenshot4a.png" />
+    </div>
+    <div style="flex:45%;">
+        <img src="http://localhost:4000/assets/vox/bonus/screenshot4b.png" />
+    </div>
+</div>
+<p>
+These screenshots are the result of the octree being incorrectly stored. Volumes filled with only one type of mass may have to be divided further if a vertex must lie in that volume, i.e. if there is a different type of mass that lies along its edge. If that condition is ignored, then this result is produced. I think it's interesting because you can see the octree in the rendered mesh.
+</p>
+<div style="display:flex; margin:1em;">
+    <div style="flex:45%;">
+        <img src="http://localhost:4000/assets/vox/bonus/screenshot5a.png" />
+    </div>
+    <div style="flex:45%;">
+        <img src="http://localhost:4000/assets/vox/bonus/screenshot5b.png" />
+    </div>
+</div>
+<p>
+This is the result of a failure when the program is reading from file. In this case, the program was saving the file differently than it was reading it, which manifests in this interesting formation.
+</p>
+
+<div>
+
+
+<a href="/voxel/2018/03/26/generating-interesting-isosurfaces.html" class="float:left;">&#8249; Generating Interesting Isosurfaces</a>
+
+</div>
+
+
+  </div><a class="u-url" href="/voxel/2018/04/02/interesting-bugs.html" hidden></a>
+</article>
+
+      </div>
+    </main><footer class="site-footer h-card">
+  <data class="u-url" href="/"></data>
+
+  <div class="wrapper">
+
+    <h2 class="footer-heading">Parker Lawrence portfolio</h2>
+
+    <div class="footer-col-wrapper">
+      <div class="footer-col footer-col-1">
+        <ul class="contact-list">
+          <li class="p-name">Parker Lawrence portfolio</li><li><a class="u-email" href="mailto:liverspleenkidney@gmail.com">liverspleenkidney@gmail.com</a></li></ul>
+      </div>
+
+      <div class="footer-col footer-col-2"><ul class="social-media-list"><li><a href="https://github.com/legalian"><svg class="svg-icon"><use xlink:href="/assets/minima-social-icons.svg#github"></use></svg> <span class="username">legalian</span></a></li></ul>
+</div>
+
+      <div class="footer-col footer-col-3">
+        <p>Parker Lawrence&#39;s portfolio website and blog about interesting topics. If you&#39;re working on similar projects or you know Parker Lawrence, you may find this site interesting.</p>
+      </div>
+    </div>
+
+  </div>
+
+</footer>
+</body>
+
+</html>

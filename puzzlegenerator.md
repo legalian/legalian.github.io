@@ -9,6 +9,6 @@ Rather than practice solving these puzzles for speed, I collected many varieties
 Of all the projects on this site, this one is definitely the oldest. The most recent iteration of this project began and finished in middle school, but it was building off of an older project I had created in elementary school. The project is written in python and panda3d.
 </p>
 ![figure 4]({{"/assets/puzzle/title/figure1.png"|absolute_url}})
-{% for post in site.categories.puzzle %}
+{% for post in site.categories.puzzle reversed %}
 <h3><a href="{{ post.url }}">{{ post.title }}</a></h3>
 {% endfor %}

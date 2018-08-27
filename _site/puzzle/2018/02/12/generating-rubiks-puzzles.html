@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1"><!-- Begin Jekyll SEO tag v2.5.0 -->
+<title>Generating Rubik’s Puzzles | Parker Lawrence portfolio</title>
+<meta name="generator" content="Jekyll v3.8.3" />
+<meta property="og:title" content="Generating Rubik’s Puzzles" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="The next step for the cube generator is creating the puzzle’s visible mesh. This is done with the following process: First, each unique combination of three planes is intersected to create a vertex. This is the simplest step- it only takes some creative iteration and solving a matrix. Each vertex must remember the set of three planes created it. Second, vertices that are close together are merged. Shapes like the cube and tetrahedron don’t have to worry about this, but shapes like the octahedron and icosahedron have vertices that lie at the intersection of four or more planes, generating many duplicate vertices. Even the dodecahedron planes will create duplicate vertices, but those vertices lie outside the solid, so they only become relevant when those planes are cutting planes, not shape-defining planes. This part began to create performance issues, because N planes would create (n)(n-1)(n-3)/6 vertices, and V vertices would necessitate (v)(v-1)/2 duplicate checks. To improve the algorithm’s time complexity, I sorted the vertices by their x value first, and then used a creative iteration method to eliminate the vast majority of duplicate vertex checks. If two vertices are merged, the resulting vertex’s set of planes will be the union of the two that merged. Third, each vertex must determine which side of each plane it lies on. This can be done easily in this scenario, because it turns into one dot product. Vertices are not tested against the planes that created them. If a vertex lies on the outside of a shape-defining plane, it will be eliminated. Vertices remember which cutting planes they lie outside of. Fourth, the vertices are sorted into different containers, each container representing an indivisible piece of the puzzle. Shape planes don’t factor into this sorting process, but cutting planes do. If a puzzle has no cutting planes, then all vertices would fall into a single container. Each cutting plane multiplies the number of containers by two. Each container is divided into a container above the cutting plane, which rotates when that face is turned, and a container below it which does not. If a vertex lies above or below a cutting plane, that determines which container it falls into. If it was created by the cutting plane and therefore lies on that plane, then the vertex is duplicated and goes into both containers. Lastly, each container is stitched together to create its visible mesh. Faces are identified as non-exclusive groups of vertices that were created by the same plane. Cross and dot products are then used to sort them with the correct winding order. If the plane that created these vertices was a shape defining plane, a copy of the face vertices are made and then scaled inwards to serve as the colored part of the mesh. The rest of the application isn&#39;t as interesting from a mathematical point of view. Pieces of the puzzle can be dragged to rotate, or spheres can be clicked to rotate a face once. Pieces rotate if their centers lie above the cutting plane that was &#39;activated&#39;." />
+<meta property="og:description" content="The next step for the cube generator is creating the puzzle’s visible mesh. This is done with the following process: First, each unique combination of three planes is intersected to create a vertex. This is the simplest step- it only takes some creative iteration and solving a matrix. Each vertex must remember the set of three planes created it. Second, vertices that are close together are merged. Shapes like the cube and tetrahedron don’t have to worry about this, but shapes like the octahedron and icosahedron have vertices that lie at the intersection of four or more planes, generating many duplicate vertices. Even the dodecahedron planes will create duplicate vertices, but those vertices lie outside the solid, so they only become relevant when those planes are cutting planes, not shape-defining planes. This part began to create performance issues, because N planes would create (n)(n-1)(n-3)/6 vertices, and V vertices would necessitate (v)(v-1)/2 duplicate checks. To improve the algorithm’s time complexity, I sorted the vertices by their x value first, and then used a creative iteration method to eliminate the vast majority of duplicate vertex checks. If two vertices are merged, the resulting vertex’s set of planes will be the union of the two that merged. Third, each vertex must determine which side of each plane it lies on. This can be done easily in this scenario, because it turns into one dot product. Vertices are not tested against the planes that created them. If a vertex lies on the outside of a shape-defining plane, it will be eliminated. Vertices remember which cutting planes they lie outside of. Fourth, the vertices are sorted into different containers, each container representing an indivisible piece of the puzzle. Shape planes don’t factor into this sorting process, but cutting planes do. If a puzzle has no cutting planes, then all vertices would fall into a single container. Each cutting plane multiplies the number of containers by two. Each container is divided into a container above the cutting plane, which rotates when that face is turned, and a container below it which does not. If a vertex lies above or below a cutting plane, that determines which container it falls into. If it was created by the cutting plane and therefore lies on that plane, then the vertex is duplicated and goes into both containers. Lastly, each container is stitched together to create its visible mesh. Faces are identified as non-exclusive groups of vertices that were created by the same plane. Cross and dot products are then used to sort them with the correct winding order. If the plane that created these vertices was a shape defining plane, a copy of the face vertices are made and then scaled inwards to serve as the colored part of the mesh. The rest of the application isn&#39;t as interesting from a mathematical point of view. Pieces of the puzzle can be dragged to rotate, or spheres can be clicked to rotate a face once. Pieces rotate if their centers lie above the cutting plane that was &#39;activated&#39;." />
+<link rel="canonical" href="http://localhost:4000/puzzle/2018/02/12/generating-rubiks-puzzles.html" />
+<meta property="og:url" content="http://localhost:4000/puzzle/2018/02/12/generating-rubiks-puzzles.html" />
+<meta property="og:site_name" content="Parker Lawrence portfolio" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2018-02-12T09:39:54-05:00" />
+<script type="application/ld+json">
+{"description":"The next step for the cube generator is creating the puzzle’s visible mesh. This is done with the following process: First, each unique combination of three planes is intersected to create a vertex. This is the simplest step- it only takes some creative iteration and solving a matrix. Each vertex must remember the set of three planes created it. Second, vertices that are close together are merged. Shapes like the cube and tetrahedron don’t have to worry about this, but shapes like the octahedron and icosahedron have vertices that lie at the intersection of four or more planes, generating many duplicate vertices. Even the dodecahedron planes will create duplicate vertices, but those vertices lie outside the solid, so they only become relevant when those planes are cutting planes, not shape-defining planes. This part began to create performance issues, because N planes would create (n)(n-1)(n-3)/6 vertices, and V vertices would necessitate (v)(v-1)/2 duplicate checks. To improve the algorithm’s time complexity, I sorted the vertices by their x value first, and then used a creative iteration method to eliminate the vast majority of duplicate vertex checks. If two vertices are merged, the resulting vertex’s set of planes will be the union of the two that merged. Third, each vertex must determine which side of each plane it lies on. This can be done easily in this scenario, because it turns into one dot product. Vertices are not tested against the planes that created them. If a vertex lies on the outside of a shape-defining plane, it will be eliminated. Vertices remember which cutting planes they lie outside of. Fourth, the vertices are sorted into different containers, each container representing an indivisible piece of the puzzle. Shape planes don’t factor into this sorting process, but cutting planes do. If a puzzle has no cutting planes, then all vertices would fall into a single container. Each cutting plane multiplies the number of containers by two. Each container is divided into a container above the cutting plane, which rotates when that face is turned, and a container below it which does not. If a vertex lies above or below a cutting plane, that determines which container it falls into. If it was created by the cutting plane and therefore lies on that plane, then the vertex is duplicated and goes into both containers. Lastly, each container is stitched together to create its visible mesh. Faces are identified as non-exclusive groups of vertices that were created by the same plane. Cross and dot products are then used to sort them with the correct winding order. If the plane that created these vertices was a shape defining plane, a copy of the face vertices are made and then scaled inwards to serve as the colored part of the mesh. The rest of the application isn&#39;t as interesting from a mathematical point of view. Pieces of the puzzle can be dragged to rotate, or spheres can be clicked to rotate a face once. Pieces rotate if their centers lie above the cutting plane that was &#39;activated&#39;.","@type":"BlogPosting","url":"http://localhost:4000/puzzle/2018/02/12/generating-rubiks-puzzles.html","headline":"Generating Rubik’s Puzzles","dateModified":"2018-02-12T09:39:54-05:00","datePublished":"2018-02-12T09:39:54-05:00","mainEntityOfPage":{"@type":"WebPage","@id":"http://localhost:4000/puzzle/2018/02/12/generating-rubiks-puzzles.html"},"@context":"http://schema.org"}</script>
+<!-- End Jekyll SEO tag -->
+<link rel="stylesheet" href="/assets/main.css"><link type="application/atom+xml" rel="alternate" href="http://localhost:4000/feed.xml" title="Parker Lawrence portfolio" /></head>
+<body><header class="site-header" role="banner">
+
+  <div class="wrapper"><a class="site-title" rel="author" href="/">Parker Lawrence portfolio</a><nav class="site-nav">
+        <input type="checkbox" id="nav-trigger" class="nav-trigger" />
+        <label for="nav-trigger">
+          <span class="menu-icon">
+            <svg viewBox="0 0 18 15" width="18px" height="15px">
+              <path d="M18,1.484c0,0.82-0.665,1.484-1.484,1.484H1.484C0.665,2.969,0,2.304,0,1.484l0,0C0,0.665,0.665,0,1.484,0 h15.032C17.335,0,18,0.665,18,1.484L18,1.484z M18,7.516C18,8.335,17.335,9,16.516,9H1.484C0.665,9,0,8.335,0,7.516l0,0 c0-0.82,0.665-1.484,1.484-1.484h15.032C17.335,6.031,18,6.696,18,7.516L18,7.516z M18,13.516C18,14.335,17.335,15,16.516,15H1.484 C0.665,15,0,14.335,0,13.516l0,0c0-0.82,0.665-1.483,1.484-1.483h15.032C17.335,12.031,18,12.695,18,13.516L18,13.516z"/>
+            </svg>
+          </span>
+        </label>
+
+        <div class="trigger"><a class="page-link" href="/about/">About</a><a class="page-link" href="/breadboardcomputer.html">Breadboard Computer</a><a class="page-link" href="/puzzlegenerator.html">Puzzle Generator</a><a class="page-link" href="/tedtalk.html">TED Talk</a><a class="page-link" href="/voxelengine.html">Voxel Engine</a></div>
+      </nav></div>
+</header>
+<main class="page-content" aria-label="Content">
+      <div class="wrapper">
+        <article class="post h-entry" itemscope itemtype="http://schema.org/BlogPosting">
+
+  <header class="post-header">
+    <h1 class="post-title p-name" itemprop="name headline">Generating Rubik&#39;s Puzzles</h1>
+    <p class="post-meta">
+      <time class="dt-published" datetime="2018-02-12T09:39:54-05:00" itemprop="datePublished">Feb 12, 2018
+      </time></p>
+  </header>
+
+  <div class="post-content e-content" itemprop="articleBody">
+    <p>
+The next step for the cube generator is creating the puzzle’s visible mesh. This is done with the following process:
+First, each unique combination of three planes is intersected to create a vertex. This is the simplest step- it only takes some creative iteration and solving a matrix. Each vertex must remember the set of three planes created it. 
+</p>
+<p><img src="http://localhost:4000/assets/puzzle/chapter2/figure1.png" alt="figure 1" /></p>
+<p>
+Second, vertices that are close together are merged. Shapes like the cube and tetrahedron don’t have to worry about this, but shapes like the octahedron and icosahedron have vertices that lie at the intersection of four or more planes, generating many duplicate vertices. Even the dodecahedron planes will create duplicate vertices, but those vertices lie outside the solid, so they only become relevant when those planes are cutting planes, not shape-defining planes. This part began to create performance issues, because N planes would create (n)(n-1)(n-3)/6 vertices, and V vertices would necessitate (v)(v-1)/2 duplicate checks. To improve the algorithm’s time complexity, I sorted the vertices by their x value first, and then used a creative iteration method to eliminate the vast majority of duplicate vertex checks. If two vertices are merged, the resulting vertex’s set of planes will be the union of the two that merged. 
+</p>
+<p><img src="http://localhost:4000/assets/puzzle/chapter2/figure2.png" alt="figure 2" /></p>
+<p>
+Third, each vertex must determine which side of each plane it lies on. This can be done easily in this scenario, because it turns into one dot product. Vertices are not tested against the planes that created them. If a vertex lies on the outside of a shape-defining plane, it will be eliminated. Vertices remember which cutting planes they lie outside of. 
+</p>
+<p><img src="http://localhost:4000/assets/puzzle/chapter2/figure3.png" alt="figure 3" /></p>
+<p>
+Fourth, the vertices are sorted into different containers, each container representing an indivisible piece of the puzzle. Shape planes don’t factor into this sorting process, but cutting planes do. If a puzzle has no cutting planes, then all vertices would fall into a single container. Each cutting plane multiplies the number of containers by two. Each container is divided into a container above the cutting plane, which rotates when that face is turned, and a container below it which does not. If a vertex lies above or below a cutting plane, that determines which container it falls into. If it was created by the cutting plane and therefore lies on that plane, then the vertex is duplicated and goes into both containers. 
+</p>
+<p><img src="http://localhost:4000/assets/puzzle/chapter2/figure4.png" alt="figure 4" /></p>
+<p>
+Lastly, each container is stitched together to create its visible mesh. Faces are identified as non-exclusive groups of vertices that were created by the same plane. Cross and dot products are then used to sort them with the correct winding order. If the plane that created these vertices was a shape defining plane, a copy of the face vertices are made and then scaled inwards to serve as the colored part of the mesh. 
+</p>
+<p><img src="http://localhost:4000/assets/puzzle/chapter2/figure5.png" alt="figure 5" /></p>
+<p>
+The rest of the application isn't as interesting from a mathematical point of view. Pieces of the puzzle can be dragged to rotate, or spheres can be clicked to rotate a face once. Pieces rotate if their centers lie above the cutting plane that was 'activated'.
+</p>
+<p><img src="http://localhost:4000/assets/puzzle/chapter2/screenshot1.png" alt="screenshot 1" /></p>
+
+<div>
+
+<a href="/puzzle/2018/02/19/rubiks-puzzle-nuances.html" style="float:right;">Rubik's Puzzle Nuances &#8250;</a>
+
+
+<a href="/puzzle/2018/02/05/understanding-rubiks-puzzles.html" class="float:left;">&#8249; Understanding Rubik's Puzzles</a>
+
+</div>
+
+
+  </div><a class="u-url" href="/puzzle/2018/02/12/generating-rubiks-puzzles.html" hidden></a>
+</article>
+
+      </div>
+    </main><footer class="site-footer h-card">
+  <data class="u-url" href="/"></data>
+
+  <div class="wrapper">
+
+    <h2 class="footer-heading">Parker Lawrence portfolio</h2>
+
+    <div class="footer-col-wrapper">
+      <div class="footer-col footer-col-1">
+        <ul class="contact-list">
+          <li class="p-name">Parker Lawrence portfolio</li><li><a class="u-email" href="mailto:liverspleenkidney@gmail.com">liverspleenkidney@gmail.com</a></li></ul>
+      </div>
+
+      <div class="footer-col footer-col-2"><ul class="social-media-list"><li><a href="https://github.com/legalian"><svg class="svg-icon"><use xlink:href="/assets/minima-social-icons.svg#github"></use></svg> <span class="username">legalian</span></a></li></ul>
+</div>
+
+      <div class="footer-col footer-col-3">
+        <p>Parker Lawrence&#39;s portfolio website and blog about interesting topics. If you&#39;re working on similar projects or you know Parker Lawrence, you may find this site interesting.</p>
+      </div>
+    </div>
+
+  </div>
+
+</footer>
+</body>
+
+</html>

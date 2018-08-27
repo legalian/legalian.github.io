@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1"><!-- Begin Jekyll SEO tag v2.5.0 -->
+<title>Understanding Rubik’s Puzzles | Parker Lawrence portfolio</title>
+<meta name="generator" content="Jekyll v3.8.3" />
+<meta property="og:title" content="Understanding Rubik’s Puzzles" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="In order to build an expressive and powerful simulator, the components that differentiate twisting puzzles must be understood. First of all, puzzles are usually regular polyhedra. Puzzles that are spherical or especially irregular are outside the scope of this simulator. Secondly, puzzles are typically either face-turning, edge-turning, or vertex-turning. The simulator will support each of these (and a few more for technical reasons). Third, some puzzles are ‘deep cut’ and some are ‘shallow cut’. Each face, edge, or vertex that can be twisted has a ‘cutting plane’, or a plane that divides the puzzle into a turning and not-turning region. Increasing the depth of the cutting plane on the puzzle often increases the challenge because deeper cuts produce pieces that can be moved by many different turns. Also, puzzles can be ‘high order’, which means they have multiple parallel cutting planes, such as a 4x4 or 5x5 rubik’s cube as opposed to a 3x3 rubik’s cube. Simple puzzles can be defined by their cutting planes and planes that define their shape. A valid set of planes can be uniquely identified by a given set of normal vectors and a scalar depth. The set of normal vectors comes from a solid such as a dodecahedron, octahedron, etc. Sets of planes serve one of two distinct purposes. The volume of the puzzle is bounded by the shape planes, and cut into movable pieces by the cutting planes. Because pieces need to fit into their ending locations after a turn, they can only be rotated around symmetry groups of the solid they belong to. Therefore, cutting planes are always distributed along a symmetry group of the starting solid, with a given depth. Planes that define shape must also have the same symmetry group so that the puzzle does not change shape after it is turned. If a puzzle defined with some polyhedron’s shape planes is face turning, the cutting planes will be parallel to that shape’s faces. If the puzzle is vertex turning, the cutting planes will be parallel to that shape’s dual solid’s faces. For a puzzle with edge turning, though, calculating the cutting planes can become more difficult. Knowing that a solid and its dual have the same edge-turning cutting planes, aligning the two solids allows a third to be generated. The third solid is the convex hull of the first two solid’s vertices, and its faces are perpendicular to the cutting planes of either edge turning puzzle. For tetrahedrons, this is very simple; a regular tetrahedron is its own dual solid, and aligning them this way produces a cube. The cutting planes perpendicular to the faces of a tetrahedron (turning 120 degrees) and the cutting planes perpendicular to the faces of a cube (turning 180 degrees) represent the first set of symmetry groups that may be used together to produce puzzles. For cubes and octahedrons, the same process produces a different shape, the rhombic dodecahedron. The second set of symmetry groups consists of the cutting planes perpendicular to the faces of a cube (90 degree rotations), the faces of an octahedron (120 degree rotations), and the faces of a rhombic dodecahedron (180 degree rotations). The final set of symmetry groups comes from the icosahedron (120 degree), dodecahedron (72 degree), and rhombic triacontahedron (180 degree) via the same process." />
+<meta property="og:description" content="In order to build an expressive and powerful simulator, the components that differentiate twisting puzzles must be understood. First of all, puzzles are usually regular polyhedra. Puzzles that are spherical or especially irregular are outside the scope of this simulator. Secondly, puzzles are typically either face-turning, edge-turning, or vertex-turning. The simulator will support each of these (and a few more for technical reasons). Third, some puzzles are ‘deep cut’ and some are ‘shallow cut’. Each face, edge, or vertex that can be twisted has a ‘cutting plane’, or a plane that divides the puzzle into a turning and not-turning region. Increasing the depth of the cutting plane on the puzzle often increases the challenge because deeper cuts produce pieces that can be moved by many different turns. Also, puzzles can be ‘high order’, which means they have multiple parallel cutting planes, such as a 4x4 or 5x5 rubik’s cube as opposed to a 3x3 rubik’s cube. Simple puzzles can be defined by their cutting planes and planes that define their shape. A valid set of planes can be uniquely identified by a given set of normal vectors and a scalar depth. The set of normal vectors comes from a solid such as a dodecahedron, octahedron, etc. Sets of planes serve one of two distinct purposes. The volume of the puzzle is bounded by the shape planes, and cut into movable pieces by the cutting planes. Because pieces need to fit into their ending locations after a turn, they can only be rotated around symmetry groups of the solid they belong to. Therefore, cutting planes are always distributed along a symmetry group of the starting solid, with a given depth. Planes that define shape must also have the same symmetry group so that the puzzle does not change shape after it is turned. If a puzzle defined with some polyhedron’s shape planes is face turning, the cutting planes will be parallel to that shape’s faces. If the puzzle is vertex turning, the cutting planes will be parallel to that shape’s dual solid’s faces. For a puzzle with edge turning, though, calculating the cutting planes can become more difficult. Knowing that a solid and its dual have the same edge-turning cutting planes, aligning the two solids allows a third to be generated. The third solid is the convex hull of the first two solid’s vertices, and its faces are perpendicular to the cutting planes of either edge turning puzzle. For tetrahedrons, this is very simple; a regular tetrahedron is its own dual solid, and aligning them this way produces a cube. The cutting planes perpendicular to the faces of a tetrahedron (turning 120 degrees) and the cutting planes perpendicular to the faces of a cube (turning 180 degrees) represent the first set of symmetry groups that may be used together to produce puzzles. For cubes and octahedrons, the same process produces a different shape, the rhombic dodecahedron. The second set of symmetry groups consists of the cutting planes perpendicular to the faces of a cube (90 degree rotations), the faces of an octahedron (120 degree rotations), and the faces of a rhombic dodecahedron (180 degree rotations). The final set of symmetry groups comes from the icosahedron (120 degree), dodecahedron (72 degree), and rhombic triacontahedron (180 degree) via the same process." />
+<link rel="canonical" href="http://localhost:4000/puzzle/2018/02/05/understanding-rubiks-puzzles.html" />
+<meta property="og:url" content="http://localhost:4000/puzzle/2018/02/05/understanding-rubiks-puzzles.html" />
+<meta property="og:site_name" content="Parker Lawrence portfolio" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2018-02-05T09:39:54-05:00" />
+<script type="application/ld+json">
+{"description":"In order to build an expressive and powerful simulator, the components that differentiate twisting puzzles must be understood. First of all, puzzles are usually regular polyhedra. Puzzles that are spherical or especially irregular are outside the scope of this simulator. Secondly, puzzles are typically either face-turning, edge-turning, or vertex-turning. The simulator will support each of these (and a few more for technical reasons). Third, some puzzles are ‘deep cut’ and some are ‘shallow cut’. Each face, edge, or vertex that can be twisted has a ‘cutting plane’, or a plane that divides the puzzle into a turning and not-turning region. Increasing the depth of the cutting plane on the puzzle often increases the challenge because deeper cuts produce pieces that can be moved by many different turns. Also, puzzles can be ‘high order’, which means they have multiple parallel cutting planes, such as a 4x4 or 5x5 rubik’s cube as opposed to a 3x3 rubik’s cube. Simple puzzles can be defined by their cutting planes and planes that define their shape. A valid set of planes can be uniquely identified by a given set of normal vectors and a scalar depth. The set of normal vectors comes from a solid such as a dodecahedron, octahedron, etc. Sets of planes serve one of two distinct purposes. The volume of the puzzle is bounded by the shape planes, and cut into movable pieces by the cutting planes. Because pieces need to fit into their ending locations after a turn, they can only be rotated around symmetry groups of the solid they belong to. Therefore, cutting planes are always distributed along a symmetry group of the starting solid, with a given depth. Planes that define shape must also have the same symmetry group so that the puzzle does not change shape after it is turned. If a puzzle defined with some polyhedron’s shape planes is face turning, the cutting planes will be parallel to that shape’s faces. If the puzzle is vertex turning, the cutting planes will be parallel to that shape’s dual solid’s faces. For a puzzle with edge turning, though, calculating the cutting planes can become more difficult. Knowing that a solid and its dual have the same edge-turning cutting planes, aligning the two solids allows a third to be generated. The third solid is the convex hull of the first two solid’s vertices, and its faces are perpendicular to the cutting planes of either edge turning puzzle. For tetrahedrons, this is very simple; a regular tetrahedron is its own dual solid, and aligning them this way produces a cube. The cutting planes perpendicular to the faces of a tetrahedron (turning 120 degrees) and the cutting planes perpendicular to the faces of a cube (turning 180 degrees) represent the first set of symmetry groups that may be used together to produce puzzles. For cubes and octahedrons, the same process produces a different shape, the rhombic dodecahedron. The second set of symmetry groups consists of the cutting planes perpendicular to the faces of a cube (90 degree rotations), the faces of an octahedron (120 degree rotations), and the faces of a rhombic dodecahedron (180 degree rotations). The final set of symmetry groups comes from the icosahedron (120 degree), dodecahedron (72 degree), and rhombic triacontahedron (180 degree) via the same process.","@type":"BlogPosting","url":"http://localhost:4000/puzzle/2018/02/05/understanding-rubiks-puzzles.html","headline":"Understanding Rubik’s Puzzles","dateModified":"2018-02-05T09:39:54-05:00","datePublished":"2018-02-05T09:39:54-05:00","mainEntityOfPage":{"@type":"WebPage","@id":"http://localhost:4000/puzzle/2018/02/05/understanding-rubiks-puzzles.html"},"@context":"http://schema.org"}</script>
+<!-- End Jekyll SEO tag -->
+<link rel="stylesheet" href="/assets/main.css"><link type="application/atom+xml" rel="alternate" href="http://localhost:4000/feed.xml" title="Parker Lawrence portfolio" /></head>
+<body><header class="site-header" role="banner">
+
+  <div class="wrapper"><a class="site-title" rel="author" href="/">Parker Lawrence portfolio</a><nav class="site-nav">
+        <input type="checkbox" id="nav-trigger" class="nav-trigger" />
+        <label for="nav-trigger">
+          <span class="menu-icon">
+            <svg viewBox="0 0 18 15" width="18px" height="15px">
+              <path d="M18,1.484c0,0.82-0.665,1.484-1.484,1.484H1.484C0.665,2.969,0,2.304,0,1.484l0,0C0,0.665,0.665,0,1.484,0 h15.032C17.335,0,18,0.665,18,1.484L18,1.484z M18,7.516C18,8.335,17.335,9,16.516,9H1.484C0.665,9,0,8.335,0,7.516l0,0 c0-0.82,0.665-1.484,1.484-1.484h15.032C17.335,6.031,18,6.696,18,7.516L18,7.516z M18,13.516C18,14.335,17.335,15,16.516,15H1.484 C0.665,15,0,14.335,0,13.516l0,0c0-0.82,0.665-1.483,1.484-1.483h15.032C17.335,12.031,18,12.695,18,13.516L18,13.516z"/>
+            </svg>
+          </span>
+        </label>
+
+        <div class="trigger"><a class="page-link" href="/about/">About</a><a class="page-link" href="/breadboardcomputer.html">Breadboard Computer</a><a class="page-link" href="/puzzlegenerator.html">Puzzle Generator</a><a class="page-link" href="/tedtalk.html">TED Talk</a><a class="page-link" href="/voxelengine.html">Voxel Engine</a></div>
+      </nav></div>
+</header>
+<main class="page-content" aria-label="Content">
+      <div class="wrapper">
+        <article class="post h-entry" itemscope itemtype="http://schema.org/BlogPosting">
+
+  <header class="post-header">
+    <h1 class="post-title p-name" itemprop="name headline">Understanding Rubik&#39;s Puzzles</h1>
+    <p class="post-meta">
+      <time class="dt-published" datetime="2018-02-05T09:39:54-05:00" itemprop="datePublished">Feb 5, 2018
+      </time></p>
+  </header>
+
+  <div class="post-content e-content" itemprop="articleBody">
+    <p>
+In order to build an expressive and powerful simulator, the components that differentiate twisting puzzles must be understood.
+First of all, puzzles are usually regular polyhedra. Puzzles that are spherical or especially irregular are outside the scope of this simulator. 
+</p>
+<p><img src="http://localhost:4000/assets/puzzle/chapter1/figure1.png" alt="figure 1" />
+<img src="http://localhost:4000/assets/puzzle/chapter1/screenshot1.png" alt="screencap 1" /></p>
+<p>
+Secondly, puzzles are typically either face-turning, edge-turning, or vertex-turning. The simulator will support each of these (and a few more for technical reasons). 
+</p>
+<p><img src="http://localhost:4000/assets/puzzle/chapter1/figure2.png" alt="figure 2" /></p>
+<div style="display:flex; margin:1em;">
+    <div style="flex:33%;">
+        <img src="http://localhost:4000/assets/puzzle/chapter1/screenshot3a.png" />
+    </div>
+    <div style="flex:33%;">
+        <img src="http://localhost:4000/assets/puzzle/chapter1/screenshot3c.png" />
+    </div>
+    <div style="flex:33%;">
+        <img src="http://localhost:4000/assets/puzzle/chapter1/screenshot3b.png" />
+    </div>
+</div>
+<p>
+Third, some puzzles are ‘deep cut’ and some are ‘shallow cut’. Each face, edge, or vertex that can be twisted has a ‘cutting plane’, or a plane that divides the puzzle into a turning and not-turning region. Increasing the depth of the cutting plane on the puzzle often increases the challenge because deeper cuts produce pieces that can be moved by many different turns. Also, puzzles can be ‘high order’, which means they have multiple parallel cutting planes, such as a 4x4 or 5x5 rubik’s cube as opposed to a 3x3 rubik’s cube.
+</p>
+<p><img src="http://localhost:4000/assets/puzzle/chapter1/figure3.png" alt="figure 3" /></p>
+<div style="display:flex; margin:1em;">
+    <div style="flex:45%;">
+        <img src="http://localhost:4000/assets/puzzle/chapter1/screenshot2a.png" />
+    </div>
+    <div style="flex:45%;">
+        <img src="http://localhost:4000/assets/puzzle/chapter1/screenshot2b.png" />
+    </div>
+</div>
+<p>
+Simple puzzles can be defined by their cutting planes and planes that define their shape. A valid set of planes can be uniquely identified by a given set of normal vectors and a scalar depth. The set of normal vectors comes from a solid such as a dodecahedron, octahedron, etc. Sets of planes serve one of two distinct purposes. The volume of the puzzle is bounded by the shape planes, and cut into movable pieces by the cutting planes. Because pieces need to fit into their ending locations after a turn, they can only be rotated around symmetry groups of the solid they belong to. Therefore, cutting planes are always distributed along a symmetry group of the starting solid, with a given depth. Planes that define shape must also have the same symmetry group so that the puzzle does not change shape after it is turned.
+If a puzzle defined with some polyhedron’s shape planes is face turning, the cutting planes will be parallel to that shape’s faces. If the puzzle is vertex turning, the cutting planes will be parallel to that shape’s dual solid’s faces. 
+</p>
+<p><img src="http://localhost:4000/assets/puzzle/chapter1/figure4.png" alt="figure 4" />
+<img src="http://localhost:4000/assets/puzzle/chapter1/picture1.jpg" height="270px" style="display:block; margin-left:auto; margin-right:auto;" /></p>
+<p>
+For a puzzle with edge turning, though, calculating the cutting planes can become more difficult. Knowing that a solid and its dual have the same edge-turning cutting planes, aligning the two solids allows a third to be generated. The third solid is the convex hull of the first two solid’s vertices, and its faces are perpendicular to the cutting planes of either edge turning puzzle. 
+</p>
+<p><img src="http://localhost:4000/assets/puzzle/chapter1/figure5.png" alt="figure 5" /></p>
+<p>
+<div style="display:flex; margin:1em;">
+    <div style="flex:33%;">
+        <img src="http://localhost:4000/assets/puzzle/chapter1/screenshot4a.png" />
+    </div>
+    <div style="flex:33%;">
+        <img src="http://localhost:4000/assets/puzzle/chapter1/screenshot4b.png" />
+    </div>
+    <div style="flex:33%;">
+        <img src="http://localhost:4000/assets/puzzle/chapter1/screenshot4c.png" />
+    </div>
+</div>
+For tetrahedrons, this is very simple; a regular tetrahedron is its own dual solid, and aligning them this way produces a cube. The cutting planes perpendicular to the faces of a tetrahedron (turning 120 degrees) and the cutting planes perpendicular to the faces of a cube (turning 180 degrees) represent the first set of symmetry groups that may be used together to produce puzzles.
+</p>
+<div style="display:flex; margin:1em;">
+    <div style="flex:66%;">
+        <img src="http://localhost:4000/assets/puzzle/chapter1/screenshot5.png" />
+    </div>
+    <div style="flex:33%;">
+        <img src="http://localhost:4000/assets/puzzle/chapter1/picture2.jpg" />
+    </div>
+</div>
+<p>
+For cubes and octahedrons, the same process produces a different shape, the rhombic dodecahedron. The second set of symmetry groups consists of the cutting planes perpendicular to the faces of a cube (90 degree rotations), the faces of an octahedron (120 degree rotations), and the faces of a rhombic dodecahedron (180 degree rotations).
+</p>
+<div style="display:flex; margin:1em;">
+    <div style="flex:66%;">
+        <img src="http://localhost:4000/assets/puzzle/chapter1/screenshot6.png" />
+    </div>
+    <div style="flex:33%;">
+        <img src="http://localhost:4000/assets/puzzle/chapter1/picture3.jpg" />
+    </div>
+</div>
+<p>
+The final set of symmetry groups comes from the icosahedron (120 degree), dodecahedron (72 degree), and rhombic triacontahedron (180 degree) via the same process.
+</p>
+<div style="display:flex; margin:1em;">
+    <div style="flex:66%;">
+        <img src="http://localhost:4000/assets/puzzle/chapter1/screenshot7.png" />
+    </div>
+    <div style="flex:33%;">
+        <img src="http://localhost:4000/assets/puzzle/chapter1/picture4.jpg" />
+    </div>
+</div>
+
+<div>
+
+<a href="/puzzle/2018/02/12/generating-rubiks-puzzles.html" style="float:right;">Generating Rubik's Puzzles &#8250;</a>
+
+
+</div>
+
+
+  </div><a class="u-url" href="/puzzle/2018/02/05/understanding-rubiks-puzzles.html" hidden></a>
+</article>
+
+      </div>
+    </main><footer class="site-footer h-card">
+  <data class="u-url" href="/"></data>
+
+  <div class="wrapper">
+
+    <h2 class="footer-heading">Parker Lawrence portfolio</h2>
+
+    <div class="footer-col-wrapper">
+      <div class="footer-col footer-col-1">
+        <ul class="contact-list">
+          <li class="p-name">Parker Lawrence portfolio</li><li><a class="u-email" href="mailto:liverspleenkidney@gmail.com">liverspleenkidney@gmail.com</a></li></ul>
+      </div>
+
+      <div class="footer-col footer-col-2"><ul class="social-media-list"><li><a href="https://github.com/legalian"><svg class="svg-icon"><use xlink:href="/assets/minima-social-icons.svg#github"></use></svg> <span class="username">legalian</span></a></li></ul>
+</div>
+
+      <div class="footer-col footer-col-3">
+        <p>Parker Lawrence&#39;s portfolio website and blog about interesting topics. If you&#39;re working on similar projects or you know Parker Lawrence, you may find this site interesting.</p>
+      </div>
+    </div>
+
+  </div>
+
+</footer>
+</body>
+
+</html>

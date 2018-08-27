@@ -11,6 +11,6 @@ This was something I spent a lot of time preparing for. Most of my projects invo
 	More pages will be added here regarding the construction of the chess AI demoed at the TED talk.
 </p>
 
-{% for post in site.categories.ted %}
+{% for post in site.categories.ted reversed %}
 <h3><a href="{{ post.url }}">{{ post.title }}</a></h3>
 {% endfor %}
