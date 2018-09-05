@@ -9,8 +9,8 @@ The computer is broken down into different modules that are connected to each ot
 </p>
 ![figure 1]({{"/assets/breadboard/chapter1/figure1.png"|absolute_url}})
 <p>
-My power supply is just a usb 5v power cable that I cut and soldered to breadboard wires. It works fine.
-My clock is built from the schematic below. I swap out the capacitor to adjust the speed of the clock. [elaborate] The clock outputs a square wave that keeps the computer going.
+- My power supply is just a usb 5v power cable that I cut and soldered to breadboard wires. It works fine.
+- My clock is built using a 555 timer in astable mode. I swap out the capacitor to adjust the speed of the clock. For testing purposes, I usually keep the timer at 2Hz, because the slow timing makes it easy to see changes in LEDs that I use to test the machine. The clock outputs a square wave that signals to the machine to change states.
 Buffers are designed to store one binary word. This is how data is manipulated within the computer- binary operands are stored in buffers A and B so that the bus can be used to place the result of the operation in another location. The address buffer is the same- used for dereferencing pointers. The C buffer, on the other hand, is used for shuffling around data and debugging. Then, there’s the instruction buffer, used for storing the current instruction that is to be executed. 
 </p>
 ![figure 2]({{"/assets/breadboard/chapter1/figure2.png"|absolute_url}})

@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1"><!-- Begin Jekyll SEO tag v2.5.0 -->
+<title>Breadboard computer operations | Parker Lawrence portfolio</title>
+<meta name="generator" content="Jekyll v3.8.3" />
+<meta property="og:title" content="Breadboard computer operations" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="The other component to the chess AI is a minmax tree. This is what allows the program to look ahead to see which moves put it in a better position. When the program looks ahead some number of moves in advance, it constructs a tree that represents the next possible moves. After a certain number of moves in the future, the program will cap the tree off with the heuristic value of that node. It is assumed that the program will choose the best possible path for it, and the opponent will choose the worst path for the program. The heuristic for each node that is not a terminal node will be the max or min of its children respectively. Consider the below diagram, where the tree is in the middle of being calculated. One of the paths does not need to be explored, because the only effect it could have on the value of its parent heuristic is to lower it, and its parent’s heuristic is already too low to be considered. It can be skipped. This process is known as alpha-beta pruning, and it eliminates a lot of computation needed, which allows the program to look further ahead. In general, anytime the maximum score that the minimizing player is assured of is greater than or equal to the minimum score that the maximizing player is assured of, that node does not need to be explored. Each heuristic is expensive to calculate because it involves evaluating a neural network over the chess board. I had to play around with what inputs the neural network received to make it as effective as possible. I started with simply giving each square of the board an input for each piece it could possibly have. This was not feasible because of the number of nodes needed. The second method I tried was using a convolutional neural network. A convolutional neural network re-uses groups of weights in a moving window over the input, which must be arranged in a grid. After experimenting with various convolution sizes and approaches, the best solution turned out to be adding another input to the neural network for which pieces were under pressure, or resting on a space that could be attacked by one of the opponents pieces. After that, smaller convolutions were much more effective because they trained faster and executed faster, allowing the program to look further ahead. The solution that reigned supreme was to use a neural network with an input for each kind of piece that could lie on that space, an input for if that space was under pressure, and an input for if that space were guarded. The neural network is evaluated for each square in the grid, and summed up to get the heuristic of the entire grid. Once a game has completed, the neural network is trained over the last 8 games. The last game has the highest learning rate, with the learning rate tapering off by the 8th to last game, because it is easiest to determine a game’s outcome by later board positions. The program was trained by both playing against itself and also from games collected with a webscraper." />
+<meta property="og:description" content="The other component to the chess AI is a minmax tree. This is what allows the program to look ahead to see which moves put it in a better position. When the program looks ahead some number of moves in advance, it constructs a tree that represents the next possible moves. After a certain number of moves in the future, the program will cap the tree off with the heuristic value of that node. It is assumed that the program will choose the best possible path for it, and the opponent will choose the worst path for the program. The heuristic for each node that is not a terminal node will be the max or min of its children respectively. Consider the below diagram, where the tree is in the middle of being calculated. One of the paths does not need to be explored, because the only effect it could have on the value of its parent heuristic is to lower it, and its parent’s heuristic is already too low to be considered. It can be skipped. This process is known as alpha-beta pruning, and it eliminates a lot of computation needed, which allows the program to look further ahead. In general, anytime the maximum score that the minimizing player is assured of is greater than or equal to the minimum score that the maximizing player is assured of, that node does not need to be explored. Each heuristic is expensive to calculate because it involves evaluating a neural network over the chess board. I had to play around with what inputs the neural network received to make it as effective as possible. I started with simply giving each square of the board an input for each piece it could possibly have. This was not feasible because of the number of nodes needed. The second method I tried was using a convolutional neural network. A convolutional neural network re-uses groups of weights in a moving window over the input, which must be arranged in a grid. After experimenting with various convolution sizes and approaches, the best solution turned out to be adding another input to the neural network for which pieces were under pressure, or resting on a space that could be attacked by one of the opponents pieces. After that, smaller convolutions were much more effective because they trained faster and executed faster, allowing the program to look further ahead. The solution that reigned supreme was to use a neural network with an input for each kind of piece that could lie on that space, an input for if that space was under pressure, and an input for if that space were guarded. The neural network is evaluated for each square in the grid, and summed up to get the heuristic of the entire grid. Once a game has completed, the neural network is trained over the last 8 games. The last game has the highest learning rate, with the learning rate tapering off by the 8th to last game, because it is easiest to determine a game’s outcome by later board positions. The program was trained by both playing against itself and also from games collected with a webscraper." />
+<link rel="canonical" href="http://localhost:4000/ted/2018/06/11/minmax-tree.html" />
+<meta property="og:url" content="http://localhost:4000/ted/2018/06/11/minmax-tree.html" />
+<meta property="og:site_name" content="Parker Lawrence portfolio" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2018-06-11T10:39:54-04:00" />
+<script type="application/ld+json">
+{"description":"The other component to the chess AI is a minmax tree. This is what allows the program to look ahead to see which moves put it in a better position. When the program looks ahead some number of moves in advance, it constructs a tree that represents the next possible moves. After a certain number of moves in the future, the program will cap the tree off with the heuristic value of that node. It is assumed that the program will choose the best possible path for it, and the opponent will choose the worst path for the program. The heuristic for each node that is not a terminal node will be the max or min of its children respectively. Consider the below diagram, where the tree is in the middle of being calculated. One of the paths does not need to be explored, because the only effect it could have on the value of its parent heuristic is to lower it, and its parent’s heuristic is already too low to be considered. It can be skipped. This process is known as alpha-beta pruning, and it eliminates a lot of computation needed, which allows the program to look further ahead. In general, anytime the maximum score that the minimizing player is assured of is greater than or equal to the minimum score that the maximizing player is assured of, that node does not need to be explored. Each heuristic is expensive to calculate because it involves evaluating a neural network over the chess board. I had to play around with what inputs the neural network received to make it as effective as possible. I started with simply giving each square of the board an input for each piece it could possibly have. This was not feasible because of the number of nodes needed. The second method I tried was using a convolutional neural network. A convolutional neural network re-uses groups of weights in a moving window over the input, which must be arranged in a grid. After experimenting with various convolution sizes and approaches, the best solution turned out to be adding another input to the neural network for which pieces were under pressure, or resting on a space that could be attacked by one of the opponents pieces. After that, smaller convolutions were much more effective because they trained faster and executed faster, allowing the program to look further ahead. The solution that reigned supreme was to use a neural network with an input for each kind of piece that could lie on that space, an input for if that space was under pressure, and an input for if that space were guarded. The neural network is evaluated for each square in the grid, and summed up to get the heuristic of the entire grid. Once a game has completed, the neural network is trained over the last 8 games. The last game has the highest learning rate, with the learning rate tapering off by the 8th to last game, because it is easiest to determine a game’s outcome by later board positions. The program was trained by both playing against itself and also from games collected with a webscraper.","@type":"BlogPosting","url":"http://localhost:4000/ted/2018/06/11/minmax-tree.html","headline":"Breadboard computer operations","dateModified":"2018-06-11T10:39:54-04:00","datePublished":"2018-06-11T10:39:54-04:00","mainEntityOfPage":{"@type":"WebPage","@id":"http://localhost:4000/ted/2018/06/11/minmax-tree.html"},"@context":"http://schema.org"}</script>
+<!-- End Jekyll SEO tag -->
+<link rel="stylesheet" href="/assets/main.css"><link type="application/atom+xml" rel="alternate" href="http://localhost:4000/feed.xml" title="Parker Lawrence portfolio" /></head>
+<body><header class="site-header" role="banner">
+
+  <div class="wrapper"><a class="site-title" rel="author" href="/">Parker Lawrence portfolio</a><nav class="site-nav">
+        <input type="checkbox" id="nav-trigger" class="nav-trigger" />
+        <label for="nav-trigger">
+          <span class="menu-icon">
+            <svg viewBox="0 0 18 15" width="18px" height="15px">
+              <path d="M18,1.484c0,0.82-0.665,1.484-1.484,1.484H1.484C0.665,2.969,0,2.304,0,1.484l0,0C0,0.665,0.665,0,1.484,0 h15.032C17.335,0,18,0.665,18,1.484L18,1.484z M18,7.516C18,8.335,17.335,9,16.516,9H1.484C0.665,9,0,8.335,0,7.516l0,0 c0-0.82,0.665-1.484,1.484-1.484h15.032C17.335,6.031,18,6.696,18,7.516L18,7.516z M18,13.516C18,14.335,17.335,15,16.516,15H1.484 C0.665,15,0,14.335,0,13.516l0,0c0-0.82,0.665-1.483,1.484-1.483h15.032C17.335,12.031,18,12.695,18,13.516L18,13.516z"/>
+            </svg>
+          </span>
+        </label>
+
+        <div class="trigger"><a class="page-link" href="/about/">About</a><a class="page-link" href="/breadboardcomputer.html">Breadboard Computer</a><a class="page-link" href="/pokemonwebscraper.html">Pokemon Webscraper</a><a class="page-link" href="/puzzlegenerator.html">Puzzle Generator</a><a class="page-link" href="/tedtalk.html">TED Talk</a><a class="page-link" href="/voxelengine.html">Voxel Engine</a></div>
+      </nav></div>
+</header>
+<main class="page-content" aria-label="Content">
+      <div class="wrapper">
+        <article class="post h-entry" itemscope itemtype="http://schema.org/BlogPosting">
+
+  <header class="post-header">
+    <h1 class="post-title p-name" itemprop="name headline">Breadboard computer operations</h1>
+    <p class="post-meta">
+      <time class="dt-published" datetime="2018-06-11T10:39:54-04:00" itemprop="datePublished">Jun 11, 2018
+      </time></p>
+  </header>
+
+  <div class="post-content e-content" itemprop="articleBody">
+    <p>
+The other component to the chess AI is a minmax tree. This is what allows the program to look ahead to see which moves put it in a better position. When the program looks ahead some number of moves in advance, it constructs a tree that represents the next possible moves. After a certain number of moves in the future, the program will cap the tree off with the heuristic value of that node. It is assumed that the program will choose the best possible path for it, and the opponent will choose the worst path for the program. The heuristic for each node that is not a terminal node will be the max or min of its children respectively.
+</p>
+<p><img src="http://localhost:4000/assets/ted/chapter2/figure1.png" alt="figure 1" /></p>
+<p>
+Consider the below diagram, where the tree is in the middle of being calculated. One of the paths does not need to be explored, because the only effect it could have on the value of its parent heuristic is to lower it, and its parent’s heuristic is already too low to be considered. It can be skipped. This process is known as alpha-beta pruning, and it eliminates a lot of computation needed, which allows the program to look further ahead. In general, anytime the maximum score that the minimizing player is assured of is greater than or equal to the minimum score that the maximizing player is assured of, that node does not need to be explored. 
+</p>
+<p><img src="http://localhost:4000/assets/ted/chapter2/figure2.png" alt="figure 2" /></p>
+<p>
+Each heuristic is expensive to calculate because it involves evaluating a neural network over the chess board. I had to play around with what inputs the neural network received to make it as effective as possible. I started with simply giving each square of the board an input for each piece it could possibly have. This was not feasible because of the number of nodes needed. 
+</p>
+<p><img src="http://localhost:4000/assets/ted/chapter2/figure3.png" alt="figure 3" /></p>
+<p>
+The second method I tried was using a convolutional neural network. A convolutional neural network re-uses groups of weights in a moving window over the input, which must be arranged in a grid. 
+</p>
+<p><img src="http://localhost:4000/assets/ted/chapter2/figure4.png" alt="figure 4" /></p>
+<p>
+After experimenting with various convolution sizes and approaches, the best solution turned out to be adding another input to the neural network for which pieces were under pressure, or resting on a space that could be attacked by one of the opponents pieces. After that, smaller convolutions were much more effective because they trained faster and executed faster, allowing the program to look further ahead. The solution that reigned supreme was to use a neural network with an input for each kind of piece that could lie on that space, an input for if that space was under pressure, and an input for if that space were guarded. The neural network is evaluated for each square in the grid, and summed up to get the heuristic of the entire grid. 
+</p>
+<p><img src="http://localhost:4000/assets/ted/chapter2/figure5.png" alt="figure 5" /></p>
+<p>
+Once a game has completed, the neural network is trained over the last 8 games. The last game has the highest learning rate, with the learning rate tapering off by the 8th to last game, because it is easiest to determine a game’s outcome by later board positions. The program was trained by both playing against itself and also from games collected with a webscraper. 
+</p>
+<p><img src="http://localhost:4000/assets/ted/chapter2/figure6.png" alt="figure 6" /></p>
+
+<div>
+
+
+<a href="/ted/2018/06/04/neural-networks.html" class="float:left;">&#8249; Neural networks</a>
+
+</div>
+
+  </div><a class="u-url" href="/ted/2018/06/11/minmax-tree.html" hidden></a>
+</article>
+
+      </div>
+    </main><footer class="site-footer h-card">
+  <data class="u-url" href="/"></data>
+
+  <div class="wrapper">
+
+    <h2 class="footer-heading">Parker Lawrence portfolio</h2>
+
+    <div class="footer-col-wrapper">
+      <div class="footer-col footer-col-1">
+        <ul class="contact-list">
+          <li class="p-name">Parker Lawrence portfolio</li><li><a class="u-email" href="mailto:liverspleenkidney@gmail.com">liverspleenkidney@gmail.com</a></li></ul>
+      </div>
+
+      <div class="footer-col footer-col-2"><ul class="social-media-list"><li><a href="https://github.com/legalian"><svg class="svg-icon"><use xlink:href="/assets/minima-social-icons.svg#github"></use></svg> <span class="username">legalian</span></a></li></ul>
+</div>
+
+      <div class="footer-col footer-col-3">
+        <p>Parker Lawrence&#39;s portfolio website and blog about interesting topics. If you&#39;re working on similar projects or you know Parker Lawrence, you may find this site interesting.</p>
+      </div>
+    </div>
+
+  </div>
+
+</footer>
+</body>
+
+</html>

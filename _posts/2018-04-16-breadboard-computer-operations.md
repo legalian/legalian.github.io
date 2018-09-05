@@ -26,7 +26,6 @@ To select a buffer to input to or output from, two decoders are used. Decoders a
 Instructions are interpreted the following way:
 </p>
 ![figure 1]({{"/assets/breadboard/chapter2/figure1.png"|absolute_url}})
-
 <p>
 It is important to note the lack of a JMP instruction. This is because the computer achieves this by having the instruction counter as a possible input. This way, the computer can use a SET instruction to jump to a predefined location in the instructions, or a MOV instruction to get a location from RAM or the C buffer and jump to a computed location.
 The phase counter is a counter that I use to segment each instruction into four stages. The counter counts to four in binary, increasing by one each time it gets an input, and resetting once it reaches four. Each different number on the counter puts the machine in a different stage. The first and second stages are simple because they are the same for each different instruction, but the third and fourth depend on the instruction that the machine is currently on. 
@@ -59,9 +58,13 @@ The instruction buffer then differentiates the next two stages.
 	</li>
 </ul>
 <p>
-It is important to note that no matter the instruction, the bus is only used during the first and third phases, while the second and fourth are used for incrementing the instruction buffer only. Though I never got around to it, this was so that the machine could have two cores. Since both cores only touch the bus on thpeir first and third phases, they could coexist if one’s even phase lined up with the other’s odd phase. Each core would have its own instruction counter, instruction buffer, input/output decoders, address buffer, conditional skip latch, and its own A,B, and C buffers. A hefty number of multiplexers would need to be in place to switch between each set of buffers to select which core was interacting with the bus. Even just one core quickly became a large undertaking, though, so I let the two core design stay an idea. This idea is implemented in modern cpus as [][][][]. 
+The conditional skip latch was used to remember the state of the bus during SKP phase 3 so that during phase 4 it may or may not be incremented. I could have used one bit of a buffer IC, but at the time I didn’t have extra buffer ICs, only hex inverters. 
 </p>
-![figure 5]({{"/assets/breadboard/chapter2/figure8.png"|absolute_url}})
+![figure 8]({{"/assets/breadboard/chapter2/figure8.png"|absolute_url}})
+<p>
+It is important to note that no matter the instruction, the bus is only used during the first and third phases, while the second and fourth are used for incrementing the instruction buffer only. Though I never got around to it, this was so that the machine could have two cores. Since both cores only touch the bus on their first and third phases, they could coexist if one’s even phase lined up with the other’s odd phase. Each core would have its own instruction counter, instruction buffer, input/output decoders, address buffer, conditional skip latch, and its own A,B, and C buffers. A hefty number of multiplexers would need to be in place to switch between each set of buffers to select which core was interacting with the bus. Even just one core quickly became a large undertaking, though, so I let the two core design stay an idea. 
+</p>
+![figure 9]({{"/assets/breadboard/chapter2/figure9.png"|absolute_url}})
 
 
 <div>
