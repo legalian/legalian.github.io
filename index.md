@@ -14,10 +14,12 @@ This is my website. I write about projects that I've done and this website is st
 {% for post in site.categories.voxel reversed %}
 <h3><a href="{{ post.url }}">{{ post.title }}</a></h3>
 {% endfor %}
+
 <h1>Breadboard computer posts</h1>
 {% for post in site.categories.breadboard reversed %}
 <h3><a href="{{ post.url }}">{{ post.title }}</a></h3>
 {% endfor %}
+
 <h1>Proof engine posts</h1>
 {% for post in site.categories.proof reversed %}
 <h3><a href="{{ post.url }}">{{ post.title }}</a></h3>
