@@ -1,6 +1,6 @@
 ---
 layout: post
-title:  "Breadboard computer operations"
+title:  "Minmax trees"
 date:   2018-06-11 10:39:54 -0400
 categories: ted
 ---

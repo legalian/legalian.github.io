@@ -18,9 +18,11 @@ This is my website. I write about projects that I've done and this website is st
 </ul>
 
 <h1>Breadboard computer posts</h1>
+<ul>
 	{% for post in site.categories.breadboard reversed %}
 <li><h3><a href="{{ post.url }}">{{ post.title }}</a></h3></li>
 	{% endfor %}
+</ul>
 
 <h1>Proof engine posts</h1>
 <ul>
